@@ -14,7 +14,7 @@ namespace InterviewTestTemplatev2.Services
             _employeeRepository = employeeRepository;
         }
 
-        public async Task<BonusPoolCalculatorModel> GetBonusPool()
+        public async Task<BonusPoolCalculatorModel> GetBonusPoolAsync()
         {
             var employees = await _employeeRepository.GetEmployeesAsync();
 
@@ -28,7 +28,7 @@ namespace InterviewTestTemplatev2.Services
             };
         }
 
-        public async Task<BonusPoolCalculatorResultModel> GetBonusPoolResult(int employeeId, int totalBonusPool)
+        public async Task<BonusPoolCalculatorResultModel> GetBonusPoolCalculationResultAsync(int employeeId, int totalBonusPool)
         {
             var employees = await _employeeRepository.GetEmployeesAsync();
             var selectedEmployee = employees.First(employee => employee.ID == employeeId);

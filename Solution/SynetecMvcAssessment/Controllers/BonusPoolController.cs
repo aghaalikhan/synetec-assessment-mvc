@@ -16,7 +16,7 @@ namespace InterviewTestTemplatev2.Controllers
         
         public async Task<ActionResult> Index()
         {
-            var model = await _bonusPoolService.GetBonusPool();
+            var model = await _bonusPoolService.GetBonusPoolAsync();
             
             return View(model);
         }
@@ -25,7 +25,7 @@ namespace InterviewTestTemplatev2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Calculate(BonusPoolCalculatorModel model)
         {            
-            var resultingModel = await _bonusPoolService.GetBonusPoolResult(model.SelectedEmployeeId, model.BonusPoolAmount);         
+            var resultingModel = await _bonusPoolService.GetBonusPoolCalculationResultAsync(model.SelectedEmployeeId, model.BonusPoolAmount);         
             
             return View(resultingModel);
         }

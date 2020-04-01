@@ -5,7 +5,7 @@ namespace InterviewTestTemplatev2.Services
 {
     public interface IBonusPoolService
     {
-        Task<BonusPoolCalculatorModel> GetBonusPool();
-        Task<BonusPoolCalculatorResultModel> GetBonusPoolResult(int employeeId, int totalBonusPool);
+        Task<BonusPoolCalculatorModel> GetBonusPoolAsync();
+        Task<BonusPoolCalculatorResultModel> GetBonusPoolCalculationResultAsync(int employeeId, int totalBonusPool);
     }
 }
