@@ -13,9 +13,9 @@ namespace InterviewTestTemplatev2.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MvcInterviewV3Entities1 : DbContext
+    public partial class EmployeesDbContext : DbContext
     {
-        public MvcInterviewV3Entities1()
+        public EmployeesDbContext()
             : base("name=MvcInterviewV3Entities1")
         {
         }
