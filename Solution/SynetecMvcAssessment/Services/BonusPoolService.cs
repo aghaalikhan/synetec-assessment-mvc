@@ -1,5 +1,6 @@
 ﻿using InterviewTestTemplatev2.Models;
 using InterviewTestTemplatev2.Repositories;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,8 +31,18 @@ namespace InterviewTestTemplatev2.Services
 
         public async Task<BonusPoolCalculatorResultModel> GetBonusPoolCalculationResultAsync(int employeeId, int totalBonusPool)
         {
+            if(employeeId == default(int))
+            {
+                throw new ArgumentException($"invalid value supplied for {nameof(employeeId)}");
+            }
+
             var employees = await _employeeRepository.GetEmployeesAsync();
-            var selectedEmployee = employees.First(employee => employee.ID == employeeId);
+            var selectedEmployee = employees.FirstOrDefault(employee => employee.ID == employeeId);
+
+            if(selectedEmployee == null)
+            {                
+                throw new Exception("Invalid employee Id supplied");
+            }
 
             var sumOfSalaries = (decimal)employees.Sum(employee => employee.Salary);
             var bonusPercentage = selectedEmployee.Salary / sumOfSalaries;
